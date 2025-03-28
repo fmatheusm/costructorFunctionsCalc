@@ -7,15 +7,24 @@ function Calculadora() {
         this.pressionaEnter();
     }
 
+    // this.pressionaEnter = () => {
+    //     document.addEventListener('keydown', e => e.key === 'Enter' && this.realizaConta());
+    // }
+
     this.pressionaEnter = () => {
-        this.display.addEventListener('keyup', e => {
-            if (e.keyCode === 13) {
+        const keyPressEnter = e => {
+            if (e.key === 'Enter') {
                 this.realizaConta();
             }
-        })
+        };
+
+        document.addEventListener('keydown', keyPressEnter);
     }
 
-    this.btnParaDisplay = (valor) => this.display.value += valor;
+    this.btnParaDisplay = (valor) => {
+        this.display.value += valor;
+        this.display.focus();
+    }
 
     this.clear = () => this.display.value = '';
 
