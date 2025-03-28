@@ -1,4 +1,4 @@
-function CriaCalculadora() {
+function Calculadora() {
 
     this.display = document.querySelector('.display');
 
@@ -15,17 +15,11 @@ function CriaCalculadora() {
         })
     }
 
-    this.btnParaDisplay = (valor) => {
-        this.display.value += valor;
-    }
+    this.btnParaDisplay = (valor) => this.display.value += valor;
 
-    this.clearDisplay = () => {
-        this.display.value = '';
-    }
+    this.clear = () => this.display.value = '';
 
-    this.apagaUm = () => {
-        this.display.value = this.display.value.slice(0, -1);
-    }
+    this.del = () => this.display.value = this.display.value.slice(0, -1);
 
     this.realizaConta = () => {
         let conta = this.display.value;
@@ -53,11 +47,11 @@ function CriaCalculadora() {
             }
 
             if (el.classList.contains('btn-clear')) {
-                this.clearDisplay();
+                this.clear();
             }
 
             if (el.classList.contains('btn-del')) {
-                this.apagaUm();
+                this.del();
             }
 
             if (el.classList.contains('btn-eq')) {
@@ -67,5 +61,5 @@ function CriaCalculadora() {
     }
 }
 
-const calculadora = new CriaCalculadora();
+const calculadora = new Calculadora();
 calculadora.inicia();
